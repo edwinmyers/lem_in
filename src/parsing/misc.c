@@ -6,7 +6,7 @@
 /*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:22:18 by vice-wra          #+#    #+#             */
-/*   Updated: 2019/08/07 16:21:06 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/07 17:01:18 by vice-wra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,10 @@ int get_ants_count()
 	while (line[i])
 	{
 		if (!ft_isdigit(line[i]))
+		{
+			ft_strdel(&line);
 			return -1;
+		}
 		i++;
 	}
 	i = ft_atoi(line);

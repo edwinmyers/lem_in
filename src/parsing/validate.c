@@ -6,7 +6,7 @@
 /*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:19:02 by vice-wra          #+#    #+#             */
-/*   Updated: 2019/08/07 16:20:46 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/07 17:05:35 by vice-wra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int check_line(char *line)
 	else if (ft_strequ(line, "##end"))
 		return (2);
 	else if (line[0] == '#')
-		return (0);
+		return (7);
 	else if (ft_strchr(line, '-'))
 	{
 		str = ft_strsplit(line, '-');

@@ -6,7 +6,7 @@
 /*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 17:20:59 by vice-wra          #+#    #+#             */
-/*   Updated: 2019/08/07 16:24:01 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/07 17:06:55 by vice-wra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void parse_rooms_into_graph(t_graph *graph, char *line, int flag, int *ma
 		graph_add_end_vert(graph, str[0]);
 		(*mandatory_commands)++;
 	}
-	else
+	else if (flag != 7)
 		graph_add_vert(graph, str[0]);
 	free_string_array(&str);
 }
@@ -56,7 +56,10 @@ static int parse_links(t_graph *graph, t_dict *rooms, char *line, int *links_cou
 	idx0 = dict_at(rooms, str[0]);
 	idx1 = dict_at(rooms, str[1]);
 	if (idx0 == -2147483648 || idx1 == -2147483648)
+	{
+		free_string_array(&str);
 		return -1;
+	}
 	graph_add_edge(graph, idx0, idx1);
 	free_string_array(&str);
 	(*links_count)++;
@@ -92,6 +95,8 @@ static int read_line(char **line, t_graph *graph)
 	flag = check_line(*line);
 	if (flag == -1)
 		return (-1);
+	else if (flag == 7)
+		return (7);
 	else if (flag == 1 || flag == 2)
 	{
 		ft_strdel(line);

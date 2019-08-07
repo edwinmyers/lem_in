@@ -6,7 +6,7 @@
 /*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/16 11:45:00 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/07 15:15:20 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/07 17:00:06 by vice-wra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ int				main(void)
 	t_graph		*g;
 	t_vector	**roads;
 	t_vector	*distribution;
+	int i;
 
+	i = 0;
 	g = graph_create();
 	parse_main(g);
 	if (g->nodes->size == 0)
@@ -29,7 +31,9 @@ int				main(void)
 	distribution = get_distribution(roads, g->num_ants, num_roads);
 	output(g, roads, distribution, num_roads);
 	vector_destroy(&distribution);
-	vector_destroy(roads);
+	while (i < num_roads)
+		vector_destroy(&roads[i++]);
+	free(roads);
 	graph_destroy(&g);
 	return (0);
 }
