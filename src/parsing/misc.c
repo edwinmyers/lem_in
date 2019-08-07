@@ -6,7 +6,7 @@
 /*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:22:18 by vice-wra          #+#    #+#             */
-/*   Updated: 2019/08/06 18:27:38 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/07 16:21:06 by vice-wra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,20 @@ int get_ants_count()
 			return -1;
 		i++;
 	}
-	return (ft_atoi(line));
+	i = ft_atoi(line);
+	ft_strdel(&line);
+	return (i);
+}
+
+void free_string_array(char ***str)
+{
+	int i;
+
+	i = 0;
+	while ((*str)[i])
+	{
+		free((*str)[i]);
+		(*str)[i++] = NULL;
+	}
+	free(*str);
 }

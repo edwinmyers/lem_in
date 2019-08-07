@@ -6,7 +6,7 @@
 /*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/16 11:45:00 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/07 14:40:06 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/07 15:15:20 by vice-wra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ int				main(void)
 	num_roads = get_num_roads(g);
 	roads = get_all_roads(g, num_roads);
 	distribution = get_distribution(roads, g->num_ants, num_roads);
-	// output(g, roads, distribution, num_roads);
+	output(g, roads, distribution, num_roads);
+	vector_destroy(&distribution);
+	vector_destroy(roads);
 	graph_destroy(&g);
 	return (0);
 }

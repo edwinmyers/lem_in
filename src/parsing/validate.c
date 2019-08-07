@@ -6,7 +6,7 @@
 /*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:19:02 by vice-wra          #+#    #+#             */
-/*   Updated: 2019/08/07 11:23:18 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/07 16:20:46 by vice-wra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,18 +71,18 @@ int check_line(char *line)
 		str = ft_strsplit(line, '-');
 		if (get_size_lem(str) != 2 || check_each_char(str[0]) == -1 || check_each_char(str[1]) == -1 || count_chars(line, '-') != 1)
 		{
-			ft_strdel(str);
+			free_string_array(&str);
 			return (-1);
 		}
-		ft_strdel(str);
+		free_string_array(&str);		
 		return (3);
 	}
 	str = ft_strsplit(line, ' ');
 	if (get_size_lem(str) != 3 || check_room_name(str[0]) == -1 || check_coors(str[1], str[2]) == -1)
 	{
-		ft_strdel(str);
+		free_string_array(&str);
 		return (-1);
 	}
-	ft_strdel(str);
+	free_string_array(&str);
 	return (0);
 }
