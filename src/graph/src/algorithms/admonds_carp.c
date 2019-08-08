@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   admonds_carp.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 13:01:55 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/07 11:42:27 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/08 16:26:05 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	bfs_init(t_graph *g)
 	vert_vector_at(g->nodes, g->start_idx)->weight = 0;
 }
 
-static void		bfs(t_graph *g)
+static void		bfs(t_graph *g, t_vector *vec)
 {
 	t_int_queue	*q;
 	t_vertex	*v;
@@ -43,9 +43,11 @@ static void		bfs(t_graph *g)
 	{
 		curr = int_queue_pop(q);
 		v = vert_vector_at(g->nodes, curr);
-		i = 0;
-		while (i < vector_pair_len(v->adj))
+		i = -1;
+		while (++i < vector_pair_len(v->adj))
 		{
+			if (vec->data[curr] == 1 && vector_pair_second(v->adj, i) != -1)
+				continue ;
 			u = vert_vector_at(g->nodes, vector_pair_first(v->adj, i));
 			if (u->color == 0)
 			{
@@ -54,14 +56,13 @@ static void		bfs(t_graph *g)
 				u->prev = curr;
 				int_queue_push(q, vector_pair_first(v->adj, i));
 			}
-			++i;
 		}
 		v->color = 2;
 	}
 	int_queue_destroy(&q);
 }
 
-static void	change_weight(t_graph *g)
+static void	change_weight(t_graph *g, t_vector *vec)
 {
 	int			idx;
 	t_vertex	*v;
@@ -71,9 +72,16 @@ static void	change_weight(t_graph *g)
 	while (v->prev != -1 && v->prev != g->start_idx)
 	{
 		if (vert_vector_at(g->nodes, v->prev)->adj->data[idx].second == -1)
+		{
+			vec->data[idx] = 0;
 			graph_set_weight(g, idx, v->prev, 1);
+		}
 		else
+		{
 			graph_set_weight(g, idx, v->prev, -1);
+			vec->data[idx] = 1;
+		}
+			
 		graph_del_dir_edge(g, v->prev, idx);
 		idx = v->prev;
 		v = vert_vector_at(g->nodes, v->prev);
@@ -85,13 +93,20 @@ static void	change_weight(t_graph *g)
 	}
 }
 
-void		admonds_carp(t_graph *g)
+void		admonds_carp(t_graph *g, int num_path)
 {
-	while (1)
+	t_vector	*v;
+
+	v = vector_create(vert_vector_size(g->nodes));
+	while (num_path > 0)
 	{
-		bfs(g);
+		bfs(g, v);
 		if (vert_vector_at(g->nodes, g->end_idx)->weight == 2147483648)
 			break ;
-		change_weight(g);
+		change_weight(g, v);
+		vector_print(v);
+		ft_printf("\n");
+		--num_path;
 	}
+	vector_destroy(&v);
 }
