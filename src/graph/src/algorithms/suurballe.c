@@ -6,7 +6,7 @@
 /*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 11:20:04 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/08 10:36:56 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/07 11:04:45 by jblue-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,9 @@ static void		revrse_road(t_graph *g)
 
 void		suurballe(t_graph *g)
 {
-	dijkstra(g);
-	change_weight(g);
-	revrse_road(g);
-	dijkstra(g);
-	revrse_road(g);
+		dijkstra(g);
+		change_weight(g);
+		revrse_road(g);
+		dijkstra(g);
+		revrse_road(g);
 }
