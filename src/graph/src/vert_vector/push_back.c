@@ -6,12 +6,13 @@
 /*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 13:31:25 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/08 16:24:12 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/09 12:57:29 by vice-wra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/graph.h"
 
+int count;
 static void vertex_copy(t_vertex *v1, t_vertex *v2)
 {
 	size_t	i;
@@ -20,11 +21,14 @@ static void vertex_copy(t_vertex *v1, t_vertex *v2)
 	v1->name = ft_strdup(v2->name);
 	v1->prev = v2->prev;
 	v1->weight = v2->weight;
-	while (v2->adj != NULL && i < v2->adj->size)
+	while (i < v2->adj->size)
 	{
 		vector_pair_push_back(v1->adj, v2->adj->data[i].first, v2->adj->data[i].second);
 		++i;
 	}
+	if (!v2->adj->size)
+		v1->adj = vector_pair_create(0);
+
 }
 
 static void copy(t_vertex *dst, t_vertex *src, int size)
@@ -51,7 +55,10 @@ static void grow(t_vert_vector *v)
 void		vert_vector_push_back(t_vert_vector *v, char *name)
 {
 	if (v->size == v->capacity)
+	{
+		count++;
 		grow(v);
+	}
 	vertex_init(&v->data[v->size], name, -1, 2147483648);
 	++v->size;
 }

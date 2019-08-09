@@ -6,7 +6,7 @@
 /*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/16 11:45:00 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/08 16:46:20 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/09 18:55:05 by vice-wra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int				main(void)
 	while (i < num_roads)
 		vector_destroy(&roads[i++]);
 	free(roads);
+
 	graph_destroy(&g);
 	return (0);
 }

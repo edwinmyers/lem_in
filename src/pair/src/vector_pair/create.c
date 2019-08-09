@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 10:50:00 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/06 11:07:17 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/09 13:17:28 by vice-wra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_vector_pair		*vector_pair_create(int size)
 {
 	t_vector_pair	*v;
 
-	v = (t_vector_pair *)malloc(sizeof(t_vector_pair));
+	v = (t_vector_pair *)malloc(sizeof(t_vector_pair) * 10);
 	if (size == 0)
 	{
 		v->data = (t_pair *)malloc(sizeof(t_pair) * 10);

@@ -6,7 +6,7 @@
 /*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 11:34:03 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/07 13:21:58 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/09 18:54:48 by vice-wra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ size_t	hash(const char *key, int m, int k)
     size_t hash_val;
     size_t len;
 
+	if (key == NULL)
+		return (0);
     i = 0;
     a = 17;
     hash_val = 0;

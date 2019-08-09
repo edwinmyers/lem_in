@@ -6,7 +6,7 @@
 /*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 17:20:59 by vice-wra          #+#    #+#             */
-/*   Updated: 2019/08/08 16:02:57 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/09 18:40:58 by vice-wra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #define LINKS_COUNT flags[1]
 #define MANDATORY_COMMANDS flags[2]
 #define IDX flags[3]
+#include <stdio.h>
+int count;
 
 static void parse_rooms_into_graph(t_graph *graph, char *line, int flag, int *mandatory_commands)
 {
@@ -70,18 +72,24 @@ static int parse_into_dict(t_dict *rooms, char *line, int idx)
 {
 	char **str;
 
+
 	str = ft_strsplit(line, ' ');
+
 	if (str[1] == NULL)
 	{
 		free_string_array(&str);
 		return (0);
 	}
+
 	if (dict_at(rooms, str[0]) != -2147483648)
 	{
 		free_string_array(&str);
 		return (-1);
 	}
+
 	dict_insert(rooms, str[0], idx);
+
+
 	free_string_array(&str);
 	return (0);
 }
@@ -134,7 +142,6 @@ int parse_main(t_graph *graph)
 		IDX++;
 		ft_strdel(&line);
 	}
-	ft_strdel(&line);
 	dict_destroy(&rooms);
 	if (STATE == -1 || !LINKS_COUNT || MANDATORY_COMMANDS != 2)
 		return (-1);

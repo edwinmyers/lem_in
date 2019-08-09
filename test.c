@@ -6,7 +6,7 @@
 /*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 17:56:10 by vice-wra          #+#    #+#             */
-/*   Updated: 2019/08/06 14:12:31 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/09 16:39:15 by vice-wra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,15 @@
 int main()
 {
 	char *str = "hey-yo";
-	
+	t_dict *dict;
+	int i;
 
+	dict = dict_create();
+	i = 0;
 
-	t_dict *dict = dict_create();
-
-	dict_insert(dict, "hey", 0);
-	dict_insert(dict, "hey sup", 1);
-	dict_insert(dict, "hey tho", 2);
-	dict_insert(dict, "hey how's it goin", 3);
+	while (i < 1000)
+		dict_insert(dict, str, i++);
+	i = 0;
+	while (i++ < 1000)
+		dict_at(dict, str);
 }

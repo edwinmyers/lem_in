@@ -6,11 +6,13 @@
 /*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 13:01:55 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/07 11:42:27 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/09 13:11:25 by vice-wra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/graph.h"
+
+int count;
 
 static void	bfs_init(t_graph *g)
 {
@@ -66,6 +68,7 @@ static void	change_weight(t_graph *g)
 	int			idx;
 	t_vertex	*v;
 
+	count++;
 	idx = g->end_idx;
 	v = vert_vector_at(g->nodes, idx);
 	while (v->prev != -1 && v->prev != g->start_idx)
@@ -94,4 +97,5 @@ void		admonds_carp(t_graph *g)
 			break ;
 		change_weight(g);
 	}
+	ft_printf("%d\n", count);
 }
