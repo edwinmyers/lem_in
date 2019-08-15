@@ -6,7 +6,7 @@
 /*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/16 11:45:31 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/07 11:23:15 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/15 19:53:03 by vice-wra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include "../src/dictionary/include/dictionary.h"
 # include "../src/graph/include/graph.h"
 # include "../src/output/include/output.h"
-# include "../src/parsing/parse.h"
+# include "../src/parsing/include/parse.h"
+# include "../src/pair_dict/include/p_dict.h"
 
 #endif

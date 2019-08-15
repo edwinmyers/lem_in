@@ -6,7 +6,7 @@
 /*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 15:15:33 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/09 15:59:40 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/15 20:10:13 by vice-wra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_graph				*graph_create(void)
     graph->nodes = vert_vector_create(0);
     graph->start_idx = -1;
     graph->end_idx = -1;
+	graph->num_ants = -1;
     return (graph);
 }
 
