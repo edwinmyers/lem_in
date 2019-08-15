@@ -6,7 +6,7 @@
 /*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 17:20:59 by vice-wra          #+#    #+#             */
-/*   Updated: 2019/08/15 21:22:22 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/15 21:51:40 by vice-wra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #define MANDATORY_COMMANDS flags[2]
 #define IDX flags[3]
 
-short toggle;
 int		flags[4];
 
 static void parse_rooms_into_graph(t_graph *graph, char *line)
@@ -103,7 +102,7 @@ static int read_line(char **line, t_graph *graph, t_string *output)
 
 	if (get_next_line(0, line) == 0)
 		return (5);
-	flag = check_line(*line, graph);
+	flag = check_line(*line, graph, LINKS_COUNT);
 	if (flag == -1)
 		return (-1);
 	else if (flag == 7)

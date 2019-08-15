@@ -6,7 +6,7 @@
 /*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 18:19:02 by vice-wra          #+#    #+#             */
-/*   Updated: 2019/08/15 21:06:41 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/15 21:54:07 by vice-wra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,17 @@ int check_coors(char *first_coor, char *second_coor)
 	return (0);
 }
 
-int check_line(char *line, t_graph *graph)
+int check_line(char *line, t_graph *graph, int links)
 {
 	char **str;
 
-	if (ft_strequ(line, "##start") && graph->num_ants != -1)
+	if (ft_strequ(line, "##start") && graph->num_ants != -1 && !links)
 		return (1);
-	else if (ft_strequ(line, "##end") && graph->num_ants != -1)
+	else if (ft_strequ(line, "##end") && graph->num_ants != -1 && !links)
 		return (2);
 	else if (line && line[0] == '#' && !ft_strequ(line, "##start") && !ft_strequ(line, "##end"))
 		return (7);
-	else if (ft_strchr(line, '-') && graph->num_ants != -1)
+	else if (ft_strchr(line, '-') && graph->num_ants != -1 && !toggle)
 	{
 		str = ft_strsplit(line, '-');
 		if (get_size_lem(str) != 2 || check_each_char(str[0]) == -1 || check_each_char(str[1]) == -1 || count_chars(line, '-') != 1)
@@ -88,7 +88,7 @@ int check_line(char *line, t_graph *graph)
 		return (-1);
 	}
 	free_string_array(&str);
-	if(graph->num_ants != -1)
+	if(graph->num_ants != -1 && !links)
 		return (0);
 	return -1;
 }

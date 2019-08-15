@@ -6,12 +6,14 @@
 /*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/16 11:45:31 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/15 19:53:03 by vice-wra         ###   ########.fr       */
+/*   Updated: 2019/08/15 21:51:39 by vice-wra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEM_IN_H
 # define LEM_IN_H
+
+short toggle;
 
 # include "../src/Libftprintf/libftprintf.h"
 # include "../src/vector/include/vector.h"
