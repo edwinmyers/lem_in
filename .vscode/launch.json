@@ -8,7 +8,7 @@
 			"name": "(lldb) Launch",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceFolder}/lem-in",
+			"program": "${workspaceFolder}/lem_in",
 			"args": ["< file"],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",

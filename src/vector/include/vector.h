@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jblue-da <jblue-da@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 09:39:23 by jblue-da          #+#    #+#             */
-/*   Updated: 2019/08/09 14:45:32 by jblue-da         ###   ########.fr       */
+/*   Updated: 2019/08/16 18:18:48 by vice-wra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct		s_vector
 /* t_vector */
 t_vector			*vector_create(int size);
 void				vector_destroy(t_vector **v);
+void				vectors_destroy(t_vector ***v, int size);
 void				vector_resize(t_vector *v, int size);
 t_vector_type		vector_get_elem(t_vector *v, int idx);
 void				vector_set_elem(t_vector *v, int idx, t_vector_type val);

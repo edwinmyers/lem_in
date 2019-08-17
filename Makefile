@@ -6,7 +6,7 @@
 #    By: vice-wra <vice-wra@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/11 12:33:04 by nparker           #+#    #+#              #
-#    Updated: 2019/08/15 20:38:22 by vice-wra         ###   ########.fr        #
+#    Updated: 2019/08/16 18:08:56 by vice-wra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,10 +97,12 @@ PAIR_DICT_FILES :=	contains.c\
 					insert.c\
 					print.c\
 
-PARSING_FILES :=	ft_count_digits.c\
+PARSING_FILES :=	check_line.c\
+					ft_count_digits.c\
 					ft_isnum.c\
 					misc.c\
 					parse.c\
+					parse_line.c\
 					validate.c\
 
 QUEUE_FILES :=	init.c\
